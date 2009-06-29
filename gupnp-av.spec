@@ -5,16 +5,16 @@
 Summary:	Library for building UPnP A/V applications
 Summary(pl.UTF-8):	Biblioteka do budowania aplikacji UPnP A/V
 Name:		gupnp-av
-Version:	0.3.1
+Version:	0.4.1
 Release:	1
 License:	LGPL v2
 Group:		Libraries
 Source0:	http://www.gupnp.org/sources/gupnp-av/%{name}-%{version}.tar.gz
-# Source0-md5:	6a98f25c794bb9766e956f714261587d
+# Source0-md5:	010865d06fc96a5b3edc05cf5ae07ad2
 URL:		http://www.gupnp.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
-%{?with_apidocs:BuildRequires:	gtk-doc >= 1.0}
+BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	gupnp-devel >= 0.9
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
@@ -69,6 +69,7 @@ Dokumentacja API biblioteki gupnp-av.
 %setup -q
 
 %build
+%{__gtkdocize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
