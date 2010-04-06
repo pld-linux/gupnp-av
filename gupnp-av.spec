@@ -14,6 +14,7 @@ Source0:	http://www.gupnp.org/sources/gupnp-av/%{name}-%{version}.tar.gz
 URL:		http://www.gupnp.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
+BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	gupnp-devel >= 0.13.0
 BuildRequires:	libtool
@@ -25,8 +26,8 @@ gupnp-av is a small library that aims to easy the handling and
 implementation of UPnP A/V profiles.
 
 %description -l pl.UTF-8
-gupnp-av jest małą biblioteką, której celem jest uproszczenie
-obsługi i implementacji profili UPnP A/V.
+gupnp-av jest małą biblioteką, której celem jest uproszczenie obsługi
+i implementacji profili UPnP A/V.
 
 %package devel
 Summary:	Header files for gupnp-av library
