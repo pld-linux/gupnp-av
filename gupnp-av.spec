@@ -5,16 +5,17 @@
 Summary:	Library for building UPnP A/V applications
 Summary(pl.UTF-8):	Biblioteka do budowania aplikacji UPnP A/V
 Name:		gupnp-av
-Version:	0.5.4
+Version:	0.5.6
 Release:	1
 License:	LGPL v2
 Group:		Libraries
 Source0:	http://www.gupnp.org/sources/gupnp-av/%{name}-%{version}.tar.gz
-# Source0-md5:	78d1d1d43078fa603cd10d2402a63a52
+# Source0-md5:	31f53256eeb934dae26f86eac84145ff
 URL:		http://www.gupnp.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	docbook-dtd412-xml
+BuildRequires:	gobject-introspection-devel >= 0.6.4
 BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	gupnp-devel >= 0.13.0
 BuildRequires:	libtool
@@ -78,7 +79,8 @@ Dokumentacja API biblioteki gupnp-av.
 %{__automake}
 %configure \
 	%{?with_apidocs:--enable-gtk-doc} \
-	--with-html-dir=%{_gtkdocdir}
+	--with-html-dir=%{_gtkdocdir} \
+	--disable-silent-rules
 
 %{__make}
 
@@ -101,11 +103,13 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/libgupnp-av-1.0.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgupnp-av-1.0.so.2
+%{_libdir}/girepository-1.0/GUPnPAV-1.0.typelib
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgupnp-av-1.0.so
 %{_libdir}/libgupnp-av-1.0.la
+%{_datadir}/gir-1.0/GUPnPAV-1.0.gir
 %{_includedir}/gupnp-av-1.0
 %{_pkgconfigdir}/gupnp-av-1.0.pc
 
