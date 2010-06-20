@@ -17,7 +17,7 @@ BuildRequires:	automake
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gobject-introspection-devel >= 0.6.4
 BuildRequires:	gtk-doc >= 1.0
-BuildRequires:	gupnp-devel >= 0.13.0
+BuildRequires:	gupnp-devel >= 0.13.4
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -35,7 +35,7 @@ Summary:	Header files for gupnp-av library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gupnp-av
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gupnp-devel >= 0.13.0
+Requires:	gupnp-devel >= 0.13.4
 
 %description devel
 Header files for gupnp-av library.
