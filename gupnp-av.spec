@@ -5,13 +5,15 @@
 Summary:	Library for building UPnP A/V applications
 Summary(pl.UTF-8):	Biblioteka do budowania aplikacji UPnP A/V
 Name:		gupnp-av
-Version:	0.6.2
+# note: 0.6.x is stable, 0.7.x unstable
+Version:	0.6.3
 Release:	1
-License:	LGPL v2
+License:	LGPL v2+
 Group:		Libraries
-Source0:	http://www.gupnp.org/sites/all/files/sources/%{name}-%{version}.tar.gz
-# Source0-md5:	a3c1703141e64f7f6778fbbc5cf43783
-URL:		http://www.gupnp.org/
+#Source0Download: http://gupnp.org/download
+Source0:	http://gupnp.org/sites/all/files/sources/%{name}-%{version}.tar.gz
+# Source0-md5:	ce976d4926ca06b7407c74fbd40204c1
+URL:		http://gupnp.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	docbook-dtd412-xml
@@ -20,6 +22,7 @@ BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	gupnp-devel >= 0.13.4
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
+Requires:	gupnp >= 0.13.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -78,9 +81,9 @@ Dokumentacja API biblioteki gupnp-av.
 %{__autoheader}
 %{__automake}
 %configure \
+	--disable-silent-rules \
 	%{?with_apidocs:--enable-gtk-doc} \
-	--with-html-dir=%{_gtkdocdir} \
-	--disable-silent-rules
+	--with-html-dir=%{_gtkdocdir}
 
 %{__make}
 
