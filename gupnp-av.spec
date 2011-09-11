@@ -5,14 +5,14 @@
 Summary:	Library for building UPnP A/V applications
 Summary(pl.UTF-8):	Biblioteka do budowania aplikacji UPnP A/V
 Name:		gupnp-av
-# note: 0.6.x is stable, 0.7.x unstable
-Version:	0.6.3
+# note: 0.8.x is stable, 0.9.x unstable
+Version:	0.8.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 #Source0Download: http://gupnp.org/download
 Source0:	http://gupnp.org/sites/all/files/sources/%{name}-%{version}.tar.gz
-# Source0-md5:	ce976d4926ca06b7407c74fbd40204c1
+# Source0-md5:	8a41a3bb60b50fceb5ece71c0dc4dcfb
 URL:		http://gupnp.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
@@ -93,6 +93,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libgupnp-av-1.0.la
+
 %{!?with_apidocs:rm -rf $RPM_BUILD_ROOT%{_gtkdocdir}}
 
 %clean
@@ -111,7 +114,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgupnp-av-1.0.so
-%{_libdir}/libgupnp-av-1.0.la
 %{_datadir}/gir-1.0/GUPnPAV-1.0.gir
 %{_includedir}/gupnp-av-1.0
 %{_pkgconfigdir}/gupnp-av-1.0.pc
