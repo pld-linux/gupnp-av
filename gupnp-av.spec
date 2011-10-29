@@ -5,24 +5,25 @@
 Summary:	Library for building UPnP A/V applications
 Summary(pl.UTF-8):	Biblioteka do budowania aplikacji UPnP A/V
 Name:		gupnp-av
-# note: 0.8.x is stable, 0.9.x unstable
-Version:	0.8.0
+# note: 0.10.x is stable, 0.11.x unstable
+Version:	0.10.1
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-#Source0Download: http://gupnp.org/download
-Source0:	http://gupnp.org/sites/all/files/sources/%{name}-%{version}.tar.gz
-# Source0-md5:	8a41a3bb60b50fceb5ece71c0dc4dcfb
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gupnp-av/0.10/%{name}-%{version}.tar.xz
+# Source0-md5:	1eb8fa404f7b69189f94de3152ca5c2e
 URL:		http://gupnp.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	gobject-introspection-devel >= 0.9.5
+BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk-doc >= 1.0
-BuildRequires:	gupnp-devel >= 0.13.4
+BuildRequires:	gupnp-devel >= 0.18.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
-Requires:	gupnp >= 0.13.4
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
+Requires:	gupnp >= 0.18.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -38,7 +39,7 @@ Summary:	Header files for gupnp-av library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gupnp-av
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gupnp-devel >= 0.13.4
+Requires:	gupnp-devel >= 0.18.0
 
 %description devel
 Header files for gupnp-av library.
@@ -74,9 +75,10 @@ Dokumentacja API biblioteki gupnp-av.
 %setup -q
 
 %build
+mkdir m4
 %{__gtkdocize}
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
