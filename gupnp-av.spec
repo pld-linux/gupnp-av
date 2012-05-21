@@ -13,13 +13,13 @@ Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gupnp-av/0.10/%{name}-%{version}.tar.xz
 # Source0-md5:	a42af0751f8b0bacdda0741d3a515fec
 URL:		http://gupnp.org/
-BuildRequires:	autoconf >= 2.6
-BuildRequires:	automake >= 1.11
+BuildRequires:	autoconf >= 2.63
+BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk-doc >= 1.10
 BuildRequires:	gupnp-devel >= 0.18.0
-BuildRequires:	libtool >= 2.2
+BuildRequires:	libtool >= 2:2.2
 BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
