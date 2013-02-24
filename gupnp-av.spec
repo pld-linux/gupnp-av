@@ -26,6 +26,7 @@ BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
 %{?with_vala:BuildRequires:	vala >= 2:0.14}
+%{?with_vala:BuildRequires:	vala-gupnp >= 0.19.0}
 BuildRequires:	xz
 Requires:	gupnp >= 0.19.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
