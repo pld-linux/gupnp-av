@@ -7,12 +7,12 @@ Summary:	Library for building UPnP A/V applications
 Summary(pl.UTF-8):	Biblioteka do budowania aplikacji UPnP A/V
 Name:		gupnp-av
 # note: 0.12.x is stable, 0.13.x unstable
-Version:	0.12.6
+Version:	0.12.7
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gupnp-av/0.12/%{name}-%{version}.tar.xz
-# Source0-md5:	f56cdb269376a9e6cb062eb9960ccf57
+# Source0-md5:	7c8681df5610c582bfc178e215f849b6
 URL:		http://gupnp.org/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
@@ -25,7 +25,7 @@ BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
-%{?with_vala:BuildRequires:	vala >= 2:0.20}
+%{?with_vala:BuildRequires:	vala >= 2:0.22}
 %{?with_vala:BuildRequires:	vala-gupnp >= 0.19.0}
 BuildRequires:	xz
 Requires:	gupnp >= 0.19.0
@@ -83,7 +83,7 @@ Summary:	Vala API for gupnp-av library
 Summary(pl.UTF-8):	API języka Vala dla biblioteki gupnp-av
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
-Requires:	vala >= 2:0.20
+Requires:	vala >= 2:0.22
 Requires:	vala-gupnp >= 0.19.0
 
 %description -n vala-gupnp-av
