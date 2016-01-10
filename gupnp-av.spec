@@ -2,13 +2,13 @@
 # Conditional build:
 %bcond_without	apidocs		# do not build and package API docs
 %bcond_without	vala		# Vala API
-#
+
 Summary:	Library for building UPnP A/V applications
 Summary(pl.UTF-8):	Biblioteka do budowania aplikacji UPnP A/V
 Name:		gupnp-av
 # note: 0.12.x is stable, 0.13.x unstable
 Version:	0.12.7
-Release:	2
+Release:	3
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gupnp-av/0.12/%{name}-%{version}.tar.xz
@@ -71,6 +71,9 @@ Summary:	gupnp-av library API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki gupnp-av
 Group:		Documentation
 Requires:	gtk-doc-common
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 API and internal documentation for gupnp-av library.
