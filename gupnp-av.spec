@@ -17,18 +17,15 @@ URL:		http://gupnp.org/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	glib2-devel >= 2.34
+BuildRequires:	glib2-devel >= 1:2.34
 BuildRequires:	gobject-introspection-devel >= 1.36.0
 BuildRequires:	gtk-doc >= 1.10
-BuildRequires:	gupnp-devel >= 0.19.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
 %{?with_vala:BuildRequires:	vala >= 2:0.22}
-%{?with_vala:BuildRequires:	vala-gupnp >= 0.19.0}
 BuildRequires:	xz
-Requires:	gupnp >= 0.19.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -44,8 +41,7 @@ Summary:	Header files for gupnp-av library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gupnp-av
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 2.34
-Requires:	gupnp-devel >= 0.19.0
+Requires:	glib2-devel >= 1:2.34
 Requires:	libxml2-devel >= 2.0
 
 %description devel
@@ -87,7 +83,6 @@ Summary(pl.UTF-8):	API języka Vala dla biblioteki gupnp-av
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala >= 2:0.22
-Requires:	vala-gupnp >= 0.19.0
 %if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
 %endif
