@@ -1,0 +1,10 @@
+gupnp-av headers include some glib and libxml2 headers, so libxml2 Cflags are required to use gupnp-av
+--- gupnp-av-0.12.11/gupnp-av-1.0.pc.in.orig	2017-05-14 10:19:09.000000000 +0200
++++ gupnp-av-0.12.11/gupnp-av-1.0.pc.in	2020-05-12 07:34:04.839649008 +0200
+@@ -6,5 +6,6 @@
+ Name: gupnp-av-1.0
+ Description: GObject-based AV specific UPnP library
+ Version: @VERSION@
++Requires.private: glib-2.0 gobject-2.0 libxml-2.0
+ Libs: -L${libdir} -lgupnp-av-1.0
+ Cflags: -I${includedir}/gupnp-av-1.0
