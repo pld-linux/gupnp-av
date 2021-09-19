@@ -6,28 +6,27 @@
 Summary:	Library for building UPnP A/V applications
 Summary(pl.UTF-8):	Biblioteka do budowania aplikacji UPnP A/V
 Name:		gupnp-av
-# note: 0.12.x is stable, 0.13.x unstable
-Version:	0.12.11
-Release:	2
+# note: 0.14.x is stable, 0.15.x unstable
+Version:	0.14.0
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gupnp-av/0.12/%{name}-%{version}.tar.xz
-# Source0-md5:	f09e99ae20271b0a8cadce806098ae8b
-Patch0:		%{name}-pc.patch
-URL:		http://gupnp.org/
-BuildRequires:	autoconf >= 2.63
-BuildRequires:	automake >= 1:1.11
+Source0:	https://download.gnome.org/sources/gupnp-av/0.14/%{name}-%{version}.tar.xz
+# Source0-md5:	50bea03f3f19f5b6d5e3445ca83661d7
+URL:		https://wiki.gnome.org/Projects/GUPnP
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	glib2-devel >= 1:2.38
+BuildRequires:	glib2-devel >= 1:2.58
 BuildRequires:	gobject-introspection-devel >= 1.36.0
 BuildRequires:	gtk-doc >= 1.10
-BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 2.0
+BuildRequires:	meson
+BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	tar >= 1:1.22
 %{?with_vala:BuildRequires:	vala >= 2:0.22}
 BuildRequires:	xz
-Requires:	glib2 >= 1:2.38
+Requires:	glib2 >= 1:2.58
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -43,7 +42,7 @@ Summary:	Header files for gupnp-av library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gupnp-av
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.38
+Requires:	glib2-devel >= 1:2.58
 Requires:	libxml2-devel >= 2.0
 
 %description devel
@@ -93,30 +92,18 @@ API języka Vala dla biblioteki gupnp-av.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-%{__gtkdocize}
-%{__libtoolize}
-%{__aclocal} -I m4
-%{__autoconf}
-%{__autoheader}
-%{__automake}
-%configure \
-	--disable-silent-rules \
-	%{?with_apidocs:--enable-gtk-doc} \
-	--with-html-dir=%{_gtkdocdir}
+%meson build \
+	%{?with_apidocs:-Dgtk_doc=true} \
+	%{!?with_vala:-Dvapi=false}
 
-%{__make}
+%ninja_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
-
-# obsoleted by pkg-config
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/libgupnp-av-1.0.la
+%ninja_install -C build
 
 %{!?with_apidocs:rm -rf $RPM_BUILD_ROOT%{_gtkdocdir}}
 
@@ -128,9 +115,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS NEWS README.md
 %attr(755,root,root) %{_libdir}/libgupnp-av-1.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgupnp-av-1.0.so.2
+%attr(755,root,root) %ghost %{_libdir}/libgupnp-av-1.0.so.3
 %{_libdir}/girepository-1.0/GUPnPAV-1.0.typelib
 %{_datadir}/gupnp-av
 
