@@ -7,12 +7,12 @@ Summary:	Library for building UPnP A/V applications
 Summary(pl.UTF-8):	Biblioteka do budowania aplikacji UPnP A/V
 Name:		gupnp-av
 # note: 0.14.x is stable, 0.15.x unstable
-Version:	0.14.0
+Version:	0.14.1
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/gupnp-av/0.14/%{name}-%{version}.tar.xz
-# Source0-md5:	50bea03f3f19f5b6d5e3445ca83661d7
+# Source0-md5:	9987757b9e776c5fb11d2bfade1a8bad
 URL:		https://wiki.gnome.org/Projects/GUPnP
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	glib2-devel >= 1:2.58
