@@ -1,18 +1,18 @@
 #
 # Conditional build:
-%bcond_without	apidocs		# do not build and package API docs
+%bcond_without	apidocs		# API documentation
 %bcond_without	vala		# Vala API
 
 Summary:	Library for building UPnP A/V applications
 Summary(pl.UTF-8):	Biblioteka do budowania aplikacji UPnP A/V
 Name:		gupnp-av
 # note: 0.14.x is stable, 0.15.x unstable
-Version:	0.14.1
+Version:	0.14.3
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/gupnp-av/0.14/%{name}-%{version}.tar.xz
-# Source0-md5:	9987757b9e776c5fb11d2bfade1a8bad
+# Source0-md5:	3b8f7eb872c21a5b03ae2b22d2a71ddc
 URL:		https://wiki.gnome.org/Projects/GUPnP
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	glib2-devel >= 1:2.58
@@ -23,6 +23,7 @@ BuildRequires:	meson
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.6
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 %{?with_vala:BuildRequires:	vala >= 2:0.22}
 BuildRequires:	xz
@@ -94,16 +95,16 @@ API języka Vala dla biblioteki gupnp-av.
 %setup -q
 
 %build
-%meson build \
+%meson \
 	%{?with_apidocs:-Dgtk_doc=true} \
 	%{!?with_vala:-Dvapi=false}
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %{!?with_apidocs:rm -rf $RPM_BUILD_ROOT%{_gtkdocdir}}
 
