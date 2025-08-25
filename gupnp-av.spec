@@ -7,19 +7,19 @@ Summary:	Library for building UPnP A/V applications
 Summary(pl.UTF-8):	Biblioteka do budowania aplikacji UPnP A/V
 Name:		gupnp-av
 # note: 0.14.x is stable, 0.15.x unstable
-Version:	0.14.3
-Release:	2
+Version:	0.14.4
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/gupnp-av/0.14/%{name}-%{version}.tar.xz
-# Source0-md5:	3b8f7eb872c21a5b03ae2b22d2a71ddc
+# Source0-md5:	dd1b780fe9f5c138c722be428bf487b3
 URL:		https://wiki.gnome.org/Projects/GUPnP
 BuildRequires:	docbook-dtd412-xml
+%{?with_apidocs:BuildRequires:	gi-docgen >= 2021.1}
 BuildRequires:	glib2-devel >= 1:2.58
 BuildRequires:	gobject-introspection-devel >= 1.36.0
-BuildRequires:	gtk-doc >= 1.10
 BuildRequires:	libxml2-devel >= 2.0
-BuildRequires:	meson
+BuildRequires:	meson >= 0.58.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.6
@@ -106,7 +106,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %meson_install
 
-%{!?with_apidocs:rm -rf $RPM_BUILD_ROOT%{_gtkdocdir}}
+%if %{with apidocs}
+install -d $RPM_BUILD_ROOT%{_gidocdir}
+%{__mv} $RPM_BUILD_ROOT%{_docdir}/gupnp-av-1.0 $RPM_BUILD_ROOT%{_gidocdir}
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -136,7 +139,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/gupnp-av
+%{_gidocdir}/gupnp-av-1.0
 %endif
 
 %if %{with vala}
